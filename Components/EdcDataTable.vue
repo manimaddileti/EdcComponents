@@ -10,6 +10,7 @@ const props = withDefaults(
     emptyMessage?: string; 
     enableRowClick?: boolean; 
   }>(),
+  
   {
     loading: false,
     paginationType: 'none',
@@ -29,7 +30,6 @@ const handleRowClick = (row: Record<string, any>) => {
     emit('on-row-click', row);
   }
 };
-
 const handleSorting = (column: string) => {
   const currentOrder = sortDetails.value[column];
   const newOrder = currentOrder === 'asc' ? 'desc' : 'asc';
@@ -77,13 +77,13 @@ const handleSorting = (column: string) => {
         </tr>
       </tbody>
     </table>
-
     <div v-if="paginationType === 'classic'" class="pagination">
     </div>
   </div>
 </template>
 
 <style scoped>
+
 .data-table {
   width: 100%;
   border-collapse: collapse;

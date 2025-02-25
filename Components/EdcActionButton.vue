@@ -9,12 +9,11 @@ const props = defineProps({
   showLoader: { type: Boolean, default: false }, 
   tabindex: { type: Number, default: undefined },
   isDisabledStateStyle: { type: Boolean, default: true }, 
-  onClick: { type: Function, required: true }, 
+  onClick: { type: Function, required: true },
   onKeyUp: { type: Function as PropType<(e: KeyboardEvent) => void>, default: () => {} },
 });
 
 const loading = ref(false);
-
 const containerClasses = computed(() => ({
   container: true, 
   [`${props.type}-container`]: true,
@@ -76,6 +75,7 @@ async function handleClick() {
   align-items: center;
   transition: all 0.3s ease; 
   border-radius: 2rem;
+  margin-bottom: 2rem;
 }
 
 

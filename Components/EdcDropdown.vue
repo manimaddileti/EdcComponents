@@ -23,7 +23,6 @@ const props = withDefaults(
     enableClear: false,
   }
 );
-
 const emit = defineEmits<{
   'on-select': [selectedValue: string]; 
   'on-clear': []; 
@@ -33,22 +32,6 @@ const selectedValue = ref<string | null>(null);
 const showOptions = ref<boolean>(false); 
 const search = ref<string>(''); 
 const filteredOptions = ref([...props.options]);
-
-watch(
-  () => props.options,
-  (newOptions) => {
-    filteredOptions.value = newOptions.filter((option) =>
-      option.label.toLowerCase().includes(search.value.toLowerCase())
-    );
-  },
-  { immediate: true } 
-);
-
-watch(search, (newSearch) => {
-  filteredOptions.value = props.options.filter((option) =>
-    option.label.toLowerCase().includes(newSearch.toLowerCase())
-  );
-});
 
 function toggleOptions() {
   if (!props.disabled && !props.readOnly) {
@@ -89,7 +72,7 @@ function handleClear() {
       >
         ×
       </button>
-      <div v-if="props.loading" class="loading-spinner">Loading...</div>
+     
     
       <div class="dropdown-arrow" :class="{ 'rotate-180': showOptions }">▼</div>
     </div>
@@ -109,10 +92,6 @@ function handleClear() {
         @click="handleSelect(option.value)"
       >
         {{ option.label }}
-      </div>
-
-      <div v-if="filteredOptions.length === 0" class="no-results">
-        No results found
       </div>
     </div>
 

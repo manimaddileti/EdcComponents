@@ -21,9 +21,8 @@ const labelClasses = computed(() => ({
   <section
     v-if="breadCrumbDetails.length > 0"
     class="flex flex-row items-center self-start gap-[1rem] mb-[2rem]"
-  >
+    >
     <template v-for="(breadCrumbDetailRow, index) in breadCrumbDetails" :key="index">
-    
       <span
         :class="[
           labelClasses,
@@ -31,14 +30,12 @@ const labelClasses = computed(() => ({
         ]"
       >
         {{ breadCrumbDetailRow }}
-      </span>
-
+      </span>   
       <edc-icon
         v-if="index < breadCrumbDetails.length - 1" 
         icon="chevron-right-sharp"
         class="w-[1.2rem] h-[1.2rem] opacity-60"
-        fill="var(--color-accent)"
-      />
+        fill="var(--color-accent)"/>
     </template>
   </section>
 </template>
